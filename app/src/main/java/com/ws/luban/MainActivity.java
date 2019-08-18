@@ -10,6 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.netlibrary.network.NetWorkManager;
 import com.netlibrary.network.annotation.NetWork;
 import com.netlibrary.network.listener.NetChanggeObserver;
@@ -18,13 +20,18 @@ import com.netlibrary.network.utils.Constants;
 
 public class MainActivity extends AppCompatActivity implements NetChanggeObserver {
 
-    @Override
+
+
+
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // NetWorkManager.getDefault().setReceiver2(this);
         NetWorkManager.getDefault().register(this);
-
+        int num = JNITools.addNum(12,1);
+        Toast.makeText(getApplicationContext(),""+num,Toast.LENGTH_SHORT).show();
     }
 
     @NetWork()
